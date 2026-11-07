@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:plink="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdlsoap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap11env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12env="http://www.w3.org/2003/05/soap-envelope" xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="spyne.calculadora.soap" targetNamespace="spyne.calculadora.soap" name="Application">
+    <wsdl:types>
+        <xs:schema targetNamespace="spyne.calculadora.soap" elementFormDefault="qualified">
+            <xs:complexType name="dividir">
+                <xs:sequence>
+                    <xs:element name="a" type="xs:integer" minOccurs="0" nillable="true"/>
+                    <xs:element name="b" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="dividirResponse">
+                <xs:sequence>
+                    <xs:element name="dividirResult" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="multiplicar">
+                <xs:sequence>
+                    <xs:element name="a" type="xs:integer" minOccurs="0" nillable="true"/>
+                    <xs:element name="b" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="multiplicarResponse">
+                <xs:sequence>
+                    <xs:element name="multiplicarResult" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="restar">
+                <xs:sequence>
+                    <xs:element name="a" type="xs:integer" minOccurs="0" nillable="true"/>
+                    <xs:element name="b" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="restarResponse">
+                <xs:sequence>
+                    <xs:element name="restarResult" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="sumar">
+                <xs:sequence>
+                    <xs:element name="a" type="xs:integer" minOccurs="0" nillable="true"/>
+                    <xs:element name="b" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="sumarResponse">
+                <xs:sequence>
+                    <xs:element name="sumarResult" type="xs:integer" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="dividir" type="tns:dividir"/>
+            <xs:element name="dividirResponse" type="tns:dividirResponse"/>
+            <xs:element name="multiplicar" type="tns:multiplicar"/>
+            <xs:element name="multiplicarResponse" type="tns:multiplicarResponse"/>
+            <xs:element name="restar" type="tns:restar"/>
+            <xs:element name="restarResponse" type="tns:restarResponse"/>
+            <xs:element name="sumar" type="tns:sumar"/>
+            <xs:element name="sumarResponse" type="tns:sumarResponse"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sumar">
+        <wsdl:part name="sumar" element="tns:sumar"/>
+    </wsdl:message>
+    <wsdl:message name="sumarResponse">
+        <wsdl:part name="sumarResponse" element="tns:sumarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="restar">
+        <wsdl:part name="restar" element="tns:restar"/>
+    </wsdl:message>
+    <wsdl:message name="restarResponse">
+        <wsdl:part name="restarResponse" element="tns:restarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="multiplicar">
+        <wsdl:part name="multiplicar" element="tns:multiplicar"/>
+    </wsdl:message>
+    <wsdl:message name="multiplicarResponse">
+        <wsdl:part name="multiplicarResponse" element="tns:multiplicarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="dividir">
+        <wsdl:part name="dividir" element="tns:dividir"/>
+    </wsdl:message>
+    <wsdl:message name="dividirResponse">
+        <wsdl:part name="dividirResponse" element="tns:dividirResponse"/>
+    </wsdl:message>
+    <wsdl:service name="CalculadoraService">
+        <wsdl:port name="Application" binding="tns:Application">
+            <wsdlsoap11:address location="http://127.0.0.1:8000/"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="Application">
+        <wsdl:operation name="sumar" parameterOrder="sumar">
+            <wsdl:input name="sumar" message="tns:sumar"/>
+            <wsdl:output name="sumarResponse" message="tns:sumarResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="restar" parameterOrder="restar">
+            <wsdl:input name="restar" message="tns:restar"/>
+            <wsdl:output name="restarResponse" message="tns:restarResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="multiplicar" parameterOrder="multiplicar">
+            <wsdl:input name="multiplicar" message="tns:multiplicar"/>
+            <wsdl:output name="multiplicarResponse" message="tns:multiplicarResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="dividir" parameterOrder="dividir">
+            <wsdl:input name="dividir" message="tns:dividir"/>
+            <wsdl:output name="dividirResponse" message="tns:dividirResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="Application" type="tns:Application">
+        <wsdlsoap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sumar">
+            <wsdlsoap11:operation soapAction="sumar" style="document"/>
+            <wsdl:input name="sumar">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sumarResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="restar">
+            <wsdlsoap11:operation soapAction="restar" style="document"/>
+            <wsdl:input name="restar">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="restarResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="multiplicar">
+            <wsdlsoap11:operation soapAction="multiplicar" style="document"/>
+            <wsdl:input name="multiplicar">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="multiplicarResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dividir">
+            <wsdlsoap11:operation soapAction="dividir" style="document"/>
+            <wsdl:input name="dividir">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="dividirResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>
